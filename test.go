@@ -30,12 +30,6 @@ func main() {
 		fmt.Println("Terima kasih telah menggunakan Password Manager")
 		return
 	default:
-		fmt.Println("Opsi tidak valid, silakan")
+		fmt.Println("Opsi tidak valid, silakan coba lagi.")
 	}
-
-	
-
-	
-
-	
 }
