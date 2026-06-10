@@ -8,9 +8,12 @@ type Account struct {
 	Password    string
 }
 
-const MaxAkun = 100
-var DataAkun [MaxAkun]Account
-var JumlahAkun int
+var DataAkun = []Account{
+	{NamaLayanan: "Steam", Username: "Dezakie", Password: "Balikpapan2006"},
+	{NamaLayanan: "Google", Username: "dzakyangasli@gmail.com", Password: "Balikpapan2006"},
+	{NamaLayanan: "Instagram", Username: "dzaky_ono", Password: "Balikpapan2006"},
+}
+
 var PasswordApp string = "admin123"
 
 func GantiPasswordApp() {
@@ -35,10 +38,10 @@ func ListAkun() {
 		if p == PasswordApp {
 			for {
 				fmt.Println("\n=== Daftar Akun Tersimpan ===")
-				if JumlahAkun == 0 {
+				if len(DataAkun) == 0 {
 					fmt.Println("Belum ada akun yang tersimpan.")
 				} else {
-					for i := 0; i < JumlahAkun; i++ {
+					for i := 0; i < len(DataAkun); i++ {
 						fmt.Printf("%d. Layanan: %s | Username: %s\n", i+1, DataAkun[i].NamaLayanan, DataAkun[i].Username)
 					}
 				}
@@ -61,10 +64,10 @@ func ListAkun() {
 					MenuCari() 
 				case 2:
 					MenuUrut()
+				case 3: 
+					TampilkanStatistik()
 				case 4:
 					TambahAkun()
-				case 3: 
-				  TampilkanStatistik()
 				case 5:
 					GantiPassword()
 				case 6:
@@ -81,68 +84,11 @@ func ListAkun() {
 	}
 }
 
-
 func GantiPassword() {
-	var u, p string
-	fmt.Print("Masukan username atau email: ")
-	fmt.Scanln(&u)
-
-	for i := 0; i < JumlahAkun; i++ {
-		if DataAkun[i].Username == u {
-			fmt.Print("Masukan password pw_manager: ")
-			for p != PasswordApp {
-				fmt.Scanln(&p)
-				if p == DataAkun[i].Password {
-					fmt.Print("Masukan password baru: ")
-					fmt.Scanln(&DataAkun[i].Password)
-					fmt.Println("Password akun berhasil diubah!")
-				} else {
-					fmt.Println("Password salah woe, ulangi")
-				}
-			}
-		}
-	}
 }
 
 func TambahAkun() {
-	var u, p string
-	fmt.Print("Masukan username atau email: ")
-	fmt.Scanln(&u)
-	fmt.Print("Masukan password pw_manager: ")
-	
-	for p != PasswordApp {
-		fmt.Scanln(&p)
-		if p == PasswordApp {
-			fmt.Print("Masukan password akun: ")
-			fmt.Scanln(&DataAkun[JumlahAkun].Password)
-			DataAkun[JumlahAkun].Username = u
-			
-			fmt.Print("Masukan nama layanan: ")
-			fmt.Scanln(&DataAkun[JumlahAkun].NamaLayanan)
-
-			JumlahAkun++ 
-			fmt.Println("Akun baru berhasil ditambahkan!")
-		} else {
-			fmt.Println("Password salah woe, ulangi")
-		}
-	}
 }
 
 func HapusAkun() {
-	var u, p string
-	fmt.Print("Masukan username atau email: ")
-	fmt.Scanln(&u)
-
-	for i := 0; i < JumlahAkun; i++ {
-		if DataAkun[i].Username == u {
-			fmt.Print("Masukan password pw_manager: ")
-			fmt.Scanln(&p)
-			if p == PasswordApp {
-				DataAkun[i] = Account{} 
-				fmt.Println("Akun berhasil dihapus")
-			} else {
-				fmt.Println("Password salah woe, ulangi")
-			}
-		}
-	}
 }

@@ -30,7 +30,7 @@ func SequentialSearch() {
 	
 	ditemukan := false
 	
-	for i := 0; i < JumlahAkun; i++ {
+	for i := 0; i < len(DataAkun); i++ {
 		if l == DataAkun[i].NamaLayanan {
 			fmt.Println("\n === Hasil (Sequential) ===")
 			fmt.Printf("Detail username: %s \n", DataAkun[i].Username)
@@ -50,7 +50,7 @@ func BinarySearch() {
 	fmt.Scanln(&target)
 
 	kiri := 0
-	kanan := JumlahAkun - 1
+	kanan := len(DataAkun) - 1
 	ditemukan := false
 
 	for kiri <= kanan && !ditemukan {
