@@ -13,12 +13,7 @@ var DataAkun [MaxAkun]Account
 var JumlahAkun int
 var PasswordApp string = "admin123"
 
-func init() {
-	DataAkun[0] = Account{NamaLayanan: "Steam", Username: "Dezakie", Password: "Balikpapan2006"}
-	DataAkun[1] = Account{NamaLayanan: "Google", Username: "dzakyangasli@gmail.com", Password: "Balikpapan2006"}
-	DataAkun[2] = Account{NamaLayanan: "Instagram", Username: "dzaky_ono", Password: "Balikpapan2006"}
-	JumlahAkun = 3 
-}
+
 
 func GantiPasswordApp() {
 	var p string
@@ -40,17 +35,24 @@ func ListAkun() {
 		fmt.Scanln(&p)
 
 		if p == PasswordApp {
-			for i := 0; i < JumlahAkun; i++ {
-				fmt.Println(i+1, DataAkun[i].NamaLayanan, DataAkun[i].Username)
-			}
-
 			for {
+				fmt.Println("\n=== Daftar Akun Tersimpan ===")
+				if JumlahAkun == 0 {
+					fmt.Println("Belum ada akun yang tersimpan.")
+				} else {
+					for i := 0; i < JumlahAkun; i++ {
+						fmt.Printf("%d. Layanan: %s | Username: %s\n", i+1, DataAkun[i].NamaLayanan, DataAkun[i].Username)
+					}
+				}
+
 				fmt.Println("\n--- Menu Kelola Akun ---")
-				fmt.Println("[1] Lihat password tersimpan")
-				fmt.Println("[2] Ubah password tersimpan")
-				fmt.Println("[3] Tambah akun")
-				fmt.Println("[4] Hapus akun tersimpan")
-				fmt.Println("[5] Kembali ke Menu Utama\n")
+				fmt.Println("[1] Cari Data Akun (Search)")
+				fmt.Println("[2] Urutkan Data Akun (Sort)")
+				fmt.Println("[3] Lihat Statistik & Kekuatan Sandi")
+				fmt.Println("[4] Tambah Akun baru")
+				fmt.Println("[5] Ubah Password Akun")
+				fmt.Println("[6] Hapus Akun Tersimpan")
+				fmt.Println("[7] Kembali ke Menu Utama\n")
 				fmt.Print("Masukkan opsi pilihan: ")
 
 				var input int
@@ -58,15 +60,19 @@ func ListAkun() {
 
 				switch input {
 				case 1:
-					LihatPassword() 
+					MenuCari() 
 				case 2:
-					GantiPassword()
-				case 3:
-					TambahAkun()
+					MenuUrut()
 				case 4:
-					HapusAkun()
+					TambahAkun()
+				case 3: 
+				  TampilkanStatistik()
 				case 5:
-					return
+					GantiPassword()
+				case 6:
+					HapusAkun()
+				case 7:
+					return 
 				default:
 					fmt.Println("Opsi tidak valid, silakan coba lagi")
 				}
@@ -76,6 +82,7 @@ func ListAkun() {
 		}
 	}
 }
+
 
 func GantiPassword() {
 	var u, p string
