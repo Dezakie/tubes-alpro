@@ -1,9 +1,6 @@
 package securepass
 
-import (
-  "fmt"
-  "strings"
-  )
+import "fmt"
 
 func MenuCari() {
 	var opsi int
@@ -20,7 +17,7 @@ func MenuCari() {
 	case 2:
 		BinarySearch()
 	case 3:
-	  return
+		return
 	default:
 		fmt.Println("Opsi tidak valid.")
 	}
@@ -34,7 +31,7 @@ func SequentialSearch() {
 	ditemukan := false
 	
 	for i := 0; i < JumlahAkun; i++ {
-		if strings.ToLower(l) == strings.ToLower(DataAkun[i].NamaLayanan) {
+		if l == DataAkun[i].NamaLayanan {
 			fmt.Println("\n === Hasil (Sequential) ===")
 			fmt.Printf("Detail username: %s \n", DataAkun[i].Username)
 			fmt.Printf("Detail password: %s \n", DataAkun[i].Password)
@@ -48,33 +45,30 @@ func SequentialSearch() {
 }
 
 func BinarySearch() {
-  var target string
-  fmt.Print("\nMasukan nama layanan: ")
-  fmt.Scanln(&target)
-  
-  kiri := 0
-  kanan := JumlahAkun - 1
-  ditemukan := false
-  
-  targetLayanan := strings.ToLower(target)
-  
-  for kiri <= kanan && !ditemukan {
-    tengah := (kiri+kanan) / 2
-    
-    tengahLayanan := strings.ToLower (DataAkun[tengah].NamaLayanan)
-    
-    if tengahLayanan == targetLayanan {
-      fmt.Println("\n === Hasil (Binary) ===")
-      fmt.Printf("Detail username: %s \n", DataAkun[tengah].Username)
+	var target string
+	fmt.Print("\nMasukan nama layanan: ")
+	fmt.Scanln(&target)
+
+	kiri := 0
+	kanan := JumlahAkun - 1
+	ditemukan := false
+
+	for kiri <= kanan && !ditemukan {
+		tengah := (kiri + kanan) / 2
+
+		if DataAkun[tengah].NamaLayanan == target {
+			fmt.Println("\n === Hasil (Binary) ===")
+			fmt.Printf("Detail username: %s \n", DataAkun[tengah].Username)
 			fmt.Printf("Detail password: %s \n", DataAkun[tengah].Password)
 			ditemukan = true
-    } else if DataAkun[tengah].NamaLayanan < target {
-      kiri = tengah + 1
-    } else {
-      kanan = tengah - 1
-    }
-  }
-  if !ditemukan {
-    fmt.Println("Akun tidak ditemukan, atau data belum terurut secara alfabetis")
-  }
+		} else if DataAkun[tengah].NamaLayanan < target {
+			kiri = tengah + 1
+		} else {
+			kanan = tengah - 1
+		}
+	}
+	
+	if !ditemukan {
+		fmt.Println("Akun tidak ditemukan, atau data belum terurut secara alfabetis")
+	}
 }

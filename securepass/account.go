@@ -13,8 +13,6 @@ var DataAkun [MaxAkun]Account
 var JumlahAkun int
 var PasswordApp string = "admin123"
 
-
-
 func GantiPasswordApp() {
 	var p string
 	fmt.Print("Masukan password pw_manager saat ini: ")
