@@ -2,28 +2,8 @@ package securepass
 
 import "fmt"
 
-func MenuCari() {
-	var opsi int
-	fmt.Println("\n--- Metode Pencarian ---")
-	fmt.Println("[1] Sequential Search")
-	fmt.Println("[2] Binary Search")
-	fmt.Println("[3] Kembali")
-	fmt.Print("Pilih metode: ")
-	fmt.Scanln(&opsi)
-
-	switch opsi {
-	case 1:
-		SequentialSearch()
-	case 2:
-		BinarySearch()
-	case 3:
-		return
-	default:
-		fmt.Println("Opsi tidak valid.")
-	}
-}
-
-func SequentialSearch() {
+// Sequential Search
+func CariBerdasarkanLayanan() {
 	var l string
 	fmt.Print("\nMasukan nama layanan: ")
 	fmt.Scanln(&l)
@@ -32,7 +12,7 @@ func SequentialSearch() {
 	
 	for i := 0; i < len(DataAkun); i++ {
 		if l == DataAkun[i].NamaLayanan {
-			fmt.Println("\n === Hasil (Sequential) ===")
+			fmt.Println("\n === Hasil (Sequential + Insertion) ===")
 			fmt.Printf("Detail username: %s \n", DataAkun[i].Username)
 			fmt.Printf("Detail password: %s \n", DataAkun[i].Password)
 			ditemukan = true
@@ -44,11 +24,11 @@ func SequentialSearch() {
 	}
 }
 
-func BinarySearch() {
+// Binary Search
+func CariBerdasarkanUsername() {
 	var target string
-	fmt.Print("\nMasukan nama layanan: ")
+	fmt.Print("\nMasukan nama username: ")
 	fmt.Scanln(&target)
-
 	kiri := 0
 	kanan := len(DataAkun) - 1
 	ditemukan := false
@@ -56,12 +36,12 @@ func BinarySearch() {
 	for kiri <= kanan && !ditemukan {
 		tengah := (kiri + kanan) / 2
 
-		if DataAkun[tengah].NamaLayanan == target {
-			fmt.Println("\n === Hasil (Binary) ===")
-			fmt.Printf("Detail username: %s \n", DataAkun[tengah].Username)
+		if DataAkun[tengah].Username == target {
+			fmt.Println("\n === Hasil (Binary + Selection) ===")
+			fmt.Printf("Detail layanan: %s \n", DataAkun[tengah].NamaLayanan)
 			fmt.Printf("Detail password: %s \n", DataAkun[tengah].Password)
 			ditemukan = true
-		} else if DataAkun[tengah].NamaLayanan < target {
+		} else if DataAkun[tengah].Username < target {
 			kiri = tengah + 1
 		} else {
 			kanan = tengah - 1
@@ -72,3 +52,4 @@ func BinarySearch() {
 		fmt.Println("Akun tidak ditemukan, atau data belum terurut secara alfabetis")
 	}
 }
+

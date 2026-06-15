@@ -55,19 +55,22 @@ fmt.Println("\n=== Pilihan Menu Utama ===")
 
 				switch input {
 				case 1:
-					MenuCari() 
+					CariBerdasarkanLayanan()
 				case 2:
-					MenuUrut()
-				case 3: 
-					TampilkanStatistik()
+					CariBerdasarkanUsername()
+				case 3:
+					SortBerdasarkanAlfabet()
 				case 4:
-					TambahAkun()
+					SortBerdasarkanWaktu()
 				case 5:
-					GantiPassword()
+					TambahAkun()
 				case 6:
-					HapusAkun()
+					GantiPassword()
 				case 7:
-					return 
+					HapusAkun()
+				case 8:
+					// Kembali / Keluar dari perulangan menu
+					return
 				default:
 					fmt.Println("Opsi tidak valid, silakan coba lagi")
 				}

@@ -2,6 +2,10 @@ package securepass
 
 import "fmt"
 
-func MenuUrut() {
-	fmt.Println("\n[Fitur Pengurutan belum dibuat]")
+func SortBerdasarkanAlfabet() {
+	fmt.Println("\n[Fitur Pengurutan berdasarkan alfabet belum dibuat]")
+}
+
+func SortBerdasarkanWaktu() {
+	fmt.Println("\n[Fitur Pengurutan berdasarkan waktu belum dibuat]")
 }
