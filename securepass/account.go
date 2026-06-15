@@ -9,9 +9,18 @@ type Account struct {
 }
 
 var DataAkun = []Account{
-	{NamaLayanan: "Steam", Username: "Dezakie", Password: "Balikpapan2006"},
-	{NamaLayanan: "Google", Username: "dzakyangasli@gmail.com", Password: "Balikpapan2006"},
-	{NamaLayanan: "Instagram", Username: "dzaky_ono", Password: "Balikpapan2006"},
+{NamaLayanan: "Steam", Username: "Dezakie", Password: "Balikpapan2006"},     
+	{NamaLayanan: "Google", Username: "dzakyangasli@gmail.com", Password: "Balikpapan2006"}, 
+	{NamaLayanan: "Instagram", Username: "dzaky_ono", Password: "Balikpapan2006"},   
+
+	{NamaLayanan: "Instagram", Username: "dzaky_second", Password: "12345678"},      
+	{NamaLayanan: "Google", Username: "kampus_dzaky@student.telkomuniversity.ac.id", Password: "C0d3r_T3lU!!"}, 
+	{NamaLayanan: "Steam", Username: "dzaky_smurf", Password: "hanyahuruf"},        
+
+	{NamaLayanan: "Github", Username: "coder_dzaky", Password: "G1thub!Secret99"},    
+	{NamaLayanan: "Spotify", Username: "musik_dzaky", Password: "LaguEnak2026"},     
+	{NamaLayanan: "Discord", Username: "admin_dzaky", Password: "mabar"},             
+	{NamaLayanan: "TikTok", Username: "vt_dzaky", Password: "T1kT0k_Jaya!!"},
 }
 
 var PasswordApp string = "admin123"
