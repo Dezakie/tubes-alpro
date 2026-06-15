@@ -37,23 +37,17 @@ func ListAkun() {
 
 		if p == PasswordApp {
 			for {
-				fmt.Println("\n=== Daftar Akun Tersimpan ===")
-				if len(DataAkun) == 0 {
-					fmt.Println("Belum ada akun yang tersimpan.")
-				} else {
-					for i := 0; i < len(DataAkun); i++ {
-						fmt.Printf("%d. Layanan: %s | Username: %s\n", i+1, DataAkun[i].NamaLayanan, DataAkun[i].Username)
-					}
-				}
+				TampilkanStatistik()
 
-				fmt.Println("\n--- Menu Kelola Akun ---")
-				fmt.Println("[1] Cari Data Akun (Search)")
-				fmt.Println("[2] Urutkan Data Akun (Sort)")
-				fmt.Println("[3] Lihat Statistik & Kekuatan Sandi")
-				fmt.Println("[4] Tambah Akun baru")
-				fmt.Println("[5] Ubah Password Akun")
-				fmt.Println("[6] Hapus Akun Tersimpan")
-				fmt.Println("[7] Kembali ke Menu Utama\n")
+fmt.Println("\n=== Pilihan Menu Utama ===")
+				fmt.Println("[1] Lihat password berdasarkan layanan (Sequential + Insertion)")
+				fmt.Println("[2] Lihat password berdasarkan username (Binary + Selection)")
+				fmt.Println("[3] Sorting berdasarkan alfabet (Selection)")
+				fmt.Println("[4] Sorting berdasarkan waktu input (Insertion)")
+				fmt.Println("[5] Tambah akun")
+				fmt.Println("[6] Ubah password")
+				fmt.Println("[7] Hapus akun")
+				fmt.Println("[8] Keluar")
 				fmt.Print("Masukkan opsi pilihan: ")
 
 				var input int
