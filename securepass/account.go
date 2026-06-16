@@ -30,12 +30,12 @@ var PasswordApp string = "admin123"
 
 func GantiPasswordApp() {
 	var p string
-	fmt.Print("Masukan password pw_manager saat ini: ")
+	fmt.Print("Masukan password aplikasi SecurePass saat ini: ")
 	fmt.Scanln(&p)
 	if p == PasswordApp {
-		fmt.Print("Masukan password pw_manager baru: ")
+		fmt.Print("Masukan password aplikasi SecurePass baru: ")
 		fmt.Scanln(&PasswordApp)
-		fmt.Println("Password pw_manager berhasil diganti")
+		fmt.Println("Password aplikasi SecurePass berhasil diganti")
 	} else {
 		fmt.Println("Password salah woe, ulangi")
 	}
@@ -44,7 +44,7 @@ func GantiPasswordApp() {
 func ListAkun() {
 	var p string
 	for p != PasswordApp {
-		fmt.Print("\nMasukkan password PManager: ")
+		fmt.Print("\nMasukkan password: ")
 		fmt.Scanln(&p)
 
 		if p == PasswordApp {
@@ -52,16 +52,16 @@ func ListAkun() {
 				normSemua()
 				TampilkanStatistik()
 
-				fmt.Println("\n=== Pilihan Menu Utama ===")
-				fmt.Println("[1] Lihat password berdasarkan layanan (Sequential + Insertion)")
-				fmt.Println("[2] Lihat password berdasarkan username (Binary + Selection)")
+				fmt.Println("\n==== Pilihan Menu Utama ====")
+				fmt.Println("[1] Lihat password berdasarkan layanan (Sequential)")
+				fmt.Println("[2] Lihat password berdasarkan username (Binary)")
 				fmt.Println("[3] Sorting berdasarkan alfabet (Selection)")
-				fmt.Println("[4] Sorting berdasarkan waktu input (Insertion)")
+				fmt.Println("[4] Sorting berdasarkan waktu input (Insertion)") 
 				fmt.Println("[5] Tambah akun")
 				fmt.Println("[6] Ubah password")
-				fmt.Println("[7] Hapus akun")
+				fmt.Println("[7] Hapus akun ")
 				fmt.Println("[8] Keluar")
-				fmt.Print("Masukkan opsi pilihan: ")
+				fmt.Print("Masukan opsi pilihan: ")
 
 				var input int
 				fmt.Scanln(&input)

@@ -12,8 +12,8 @@ func main() {
 		fmt.Println("\n === Password Manager === \n")
 		fmt.Println("Opsi pilihan: ")
 		fmt.Println("[1] List akun yang tersimpan")
-		fmt.Println("[2] Ganti password akun Password Manager")
-		fmt.Println("[3] Keluar\n")
+		fmt.Println("[2] Ganti password aplikasi SecurePass")
+		fmt.Println("[3] Keluar dari Aplikasi\n")
 		fmt.Print("Masukan opsi pilihan: ")
 
 		fmt.Scanln(&input)

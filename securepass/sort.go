@@ -31,7 +31,28 @@ func SortBerdasarkanAlfabet() {
 
 // Insertion Sort
 func SortBerdasarkanWaktu() {
-	fmt.Println("\n[Fitur Pengurutan berdasarkan waktu belum dibuat]")
+    n := len(DataAkun)
+    for i := 1; i < n; i++ {
+        key := DataAkun[i]
+        j := i - 1
+
+        for j >= 0 && key.TimeEdit.After(DataAkun[j].TimeEdit	) {
+            DataAkun[j+1] = DataAkun[j]
+            j--
+        }
+
+        DataAkun[j+1] = key
+    }
+
+    fmt.Println("\nHasil sorting berdasarkan waktu edit:\n")
+    fmt.Printf("%-15s %-20s %-20s\n", "Layanan", "Username", "Terakhir diedit")
+    fmt.Println("========================================================")
+    for i := 0; i < n; i++ {
+        fmt.Printf("%-15s %-20s %-20s\n",
+            DataAkun[i].NamaLayanan,
+            DataAkun[i].Username,
+            DataAkun[i].TimeEdit.Format("15:04:05 02-01-2006"))
+    }
 }
 
 // Insertion Sort + Sequential Search (A-Z)
