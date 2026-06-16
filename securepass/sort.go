@@ -73,7 +73,7 @@ func SortBerdasarkanUsername() {
 	for i := 0; i < len(DataAkun); i++ {
 		minIndex := i
 		for j := i + 1; j < len(DataAkun); j++ {
-			if DataAkun[j].Username < DataAkun[minIndex].Username {
+			if DataAkun[j].UsernameNorm < DataAkun[minIndex].UsernameNorm {
 				minIndex = j
 			}
 		}
