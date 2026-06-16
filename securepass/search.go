@@ -15,6 +15,7 @@ func CariBerdasarkanLayanan() {
 		if l == DataAkun[i].LayananNorm {
 			fmt.Printf("Detail layanan: %s \n", DataAkun[i].NamaLayanan)
 			fmt.Printf("Detail password: %s \n", DataAkun[i].Password)
+			fmt.Printf("Terakhir diedit: %s \n", DataAkun[i].TimeEdit.Format("15:04:05 02-01-2006"))
 			fmt.Print("\n")
 			ditemukan = true
 		}
@@ -45,6 +46,7 @@ func CariBerdasarkanUsername() {
 		if DataAkun[tengah].UsernameNorm == target {
 			fmt.Printf("Detail username: %s \n", DataAkun[tengah].Username)
 			fmt.Printf("Detail password: %s \n", DataAkun[tengah].Password)
+			fmt.Printf("Terakhir diedit: %s \n", DataAkun[tengah].TimeEdit.Format("15:04:05 02-01-2006"))
 			fmt.Print("\n")
 			ditemukan = true
 		} else if DataAkun[tengah].UsernameNorm < target {
