@@ -147,6 +147,8 @@ func TambahAkun() {
 			Username:    username,
 			Password:    password,
 			TimeEdit:    time.Now(),
+			LayananNorm:  normalisasi(layanan),
+			UsernameNorm: normalisasi(username),
 		})
 
 		fmt.Println("\nAkun berhasil ditambahkan..")
