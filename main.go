@@ -23,7 +23,7 @@ func main() {
 		case 2:
 			securepass.GantiPasswordApp()
 		case 3:
-			fmt.Println("Terima kasih telah menggunakan Password Manager")
+			fmt.Println("Terima kasih telah menggunakan SecurePass!")
 			return
 		default:
 			fmt.Println("Opsi tidak valid, silakan coba lagi")
