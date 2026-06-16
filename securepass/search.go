@@ -4,17 +4,18 @@ import "fmt"
 
 // Sequential Search
 func CariBerdasarkanLayanan() {
+	SortBerdasarkanLayanan() 
 	var l string
 	fmt.Print("\nMasukan nama layanan: ")
 	fmt.Scanln(&l)
 	
 	ditemukan := false
-	
+	fmt.Println("\n === Hasil (Sequential + Insertion) ===")
 	for i := 0; i < len(DataAkun); i++ {
 		if l == DataAkun[i].NamaLayanan {
-			fmt.Println("\n === Hasil (Sequential + Insertion) ===")
-			fmt.Printf("Detail username: %s \n", DataAkun[i].Username)
+			fmt.Printf("Detail layanan: %s \n", DataAkun[i].NamaLayanan)
 			fmt.Printf("Detail password: %s \n", DataAkun[i].Password)
+			fmt.Print("\n")
 			ditemukan = true
 		}
 	}
@@ -26,6 +27,7 @@ func CariBerdasarkanLayanan() {
 
 // Binary Search
 func CariBerdasarkanUsername() {
+	SortBerdasarkanUsername()
 	var target string
 	fmt.Print("\nMasukan nama username: ")
 	fmt.Scanln(&target)
@@ -33,13 +35,14 @@ func CariBerdasarkanUsername() {
 	kanan := len(DataAkun) - 1
 	ditemukan := false
 
+	fmt.Println("\n === Hasil (Binary + Selection) ===")
 	for kiri <= kanan && !ditemukan {
 		tengah := (kiri + kanan) / 2
 
 		if DataAkun[tengah].Username == target {
-			fmt.Println("\n === Hasil (Binary + Selection) ===")
-			fmt.Printf("Detail layanan: %s \n", DataAkun[tengah].NamaLayanan)
+			fmt.Printf("Detail username: %s \n", DataAkun[tengah].Username)
 			fmt.Printf("Detail password: %s \n", DataAkun[tengah].Password)
+			fmt.Print("\n")
 			ditemukan = true
 		} else if DataAkun[tengah].Username < target {
 			kiri = tengah + 1
