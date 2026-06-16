@@ -27,7 +27,7 @@ var dataAkun = []data{
 var appPassword string = "admin123"
 var lemah, sedang, kuat int
 
-func main() {
+func nyoba() {
 	var input int
 	for i := 0; i < len(dataAkun); i++ {
 		dataAkun[i].tEdit = time.Now()

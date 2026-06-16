@@ -2,7 +2,7 @@ package securepass
 
 import "fmt"
 
-// Sequential Search
+// Sequential Search + Insertion Sort (A-Z)
 func CariBerdasarkanLayanan() {
 	SortBerdasarkanLayanan() 
 	var l string
@@ -25,7 +25,7 @@ func CariBerdasarkanLayanan() {
 	}
 }
 
-// Binary Search
+// Binary Search + Selection Sort (A-Z)
 func CariBerdasarkanUsername() {
 	SortBerdasarkanUsername()
 	var target string
@@ -56,3 +56,11 @@ func CariBerdasarkanUsername() {
 	}
 }
 
+// Cari berdasarkan layanan dan username
+func cariAkunLayanan(n string) {
+	for i := 0; i < len(DataAkun); i++ {
+		if DataAkun[i].LayananNorm == n {
+			fmt.Println(DataAkun[i].NamaLayanan, "     ", DataAkun[i].Username)
+		}
+	}
+}

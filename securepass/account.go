@@ -1,32 +1,29 @@
 package securepass
 
-import "fmt"
+import (
+	"fmt"
+	"time"
+)
 
 type Account struct {
 	NamaLayanan string
 	Username    string
 	Password    string
+	TimeEdit    time.Time
+
+	LayananNorm string
+	UsernameNorm string
 }
 
 var DataAkun = []Account{
-	{NamaLayanan: "Steam", Username: "Dezakie", Password: "Balikpapan2006"},
-	{NamaLayanan: "Steam", Username: "gugu", Password: "Balikpapan2006"},
 	{NamaLayanan: "Google", Username: "dzakyangasli@gmail.com", Password: "Balikpapan2006"},
-	{NamaLayanan: "Instagram", Username: "dzaky_ono", Password: "Balikpapan2006"},
-	{NamaLayanan: "Steam", Username: "fofo", Password: "Balikpapan2006"},
+	{NamaLayanan: "Google", Username: "dzaky@student.telkomuniversity.ac.id", Password: "EmailKampus999#"},
 	{NamaLayanan: "Steam", Username: "Dezakie", Password: "Balikpapan2006"},
-{NamaLayanan: "Steam", Username: "Dezakie", Password: "Balikpapan2006"},     
-	{NamaLayanan: "Google", Username: "dzakyangasli@gmail.com", Password: "Balikpapan2006"}, 
-	{NamaLayanan: "Instagram", Username: "dzaky_ono", Password: "Balikpapan2006"},   
-
-	{NamaLayanan: "Instagram", Username: "dzaky_second", Password: "12345678"},      
-	{NamaLayanan: "Google", Username: "kampus_dzaky@student.telkomuniversity.ac.id", Password: "C0d3r_T3lU!!"}, 
-	{NamaLayanan: "Steam", Username: "dzaky_smurf", Password: "hanyahuruf"},        
-
-	{NamaLayanan: "Github", Username: "coder_dzaky", Password: "G1thub!Secret99"},    
-	{NamaLayanan: "Spotify", Username: "musik_dzaky", Password: "LaguEnak2026"},     
-	{NamaLayanan: "Discord", Username: "admin_dzaky", Password: "mabar"},             
-	{NamaLayanan: "TikTok", Username: "vt_dzaky", Password: "T1kT0k_Jaya!!"},
+	{NamaLayanan: "Steam", Username: "dzaky_smurf", Password: "hanyahuruf"},
+	{NamaLayanan: "Instagram", Username: "dzaky_second", Password: "12345678"},
+	{NamaLayanan: "Github", Username: "coder_dzaky", Password: "G1thub!Secret99"},
+	{NamaLayanan: "TikTok", Username: "vt_dzaky", Password: "Tiktok1#"},
+	{NamaLayanan: "Spotify", Username: "musik_dzaky", Password: "LaguEnak2026"},
 }
 
 var PasswordApp string = "admin123"
@@ -52,9 +49,10 @@ func ListAkun() {
 
 		if p == PasswordApp {
 			for {
+				normSemua()
 				TampilkanStatistik()
 
-fmt.Println("\n=== Pilihan Menu Utama ===")
+				fmt.Println("\n=== Pilihan Menu Utama ===")
 				fmt.Println("[1] Lihat password berdasarkan layanan (Sequential + Insertion)")
 				fmt.Println("[2] Lihat password berdasarkan username (Binary + Selection)")
 				fmt.Println("[3] Sorting berdasarkan alfabet (Selection)")
@@ -84,7 +82,6 @@ fmt.Println("\n=== Pilihan Menu Utama ===")
 				case 7:
 					HapusAkun()
 				case 8:
-					// Kembali / Keluar dari perulangan menu
 					return
 				default:
 					fmt.Println("Opsi tidak valid, silakan coba lagi")
@@ -95,12 +92,85 @@ fmt.Println("\n=== Pilihan Menu Utama ===")
 		}
 	}
 }
+func spasi() {
+	fmt.Println("\n============================================================================================ ")
+}
 
 func GantiPassword() {
+	var target, target1 string
+
+	spasi()
+	fmt.Print("\nMasukan nama layanan: ")
+	fmt.Scanln(&target)
+	target = normalisasi(target)
+
+	fmt.Println(" ")
+	fmt.Println("Layanan dan username yang tersedia:")
+	cariAkunLayanan(target)
+	fmt.Println(" ")
+
+	fmt.Print("Masukan username: ")
+	fmt.Scanln(&target1)
+	target1 = normalisasi(target1)
+
+	for i := 0; i < len(DataAkun); i++ {
+		if DataAkun[i].LayananNorm == target && DataAkun[i].UsernameNorm == target1{
+			fmt.Print("Masukan password baru: ")
+			fmt.Scanln(&DataAkun[i].Password)
+			DataAkun[i].TimeEdit = time.Now()
+			fmt.Println("Password berhasil diubah..")
+			return
+		}
+	}
 }
 
 func TambahAkun() {
+	var layanan, username, password string
+
+	spasi()
+	fmt.Print("\nMasukan nama layanan: ")
+	fmt.Scanln(&layanan)
+
+	fmt.Print("Masukan username: ")
+	fmt.Scanln(&username)
+
+	fmt.Print("Masukan password: ")
+	fmt.Scanln(&password)
+
+		DataAkun = append(DataAkun, Account{
+		NamaLayanan: layanan,
+		Username: username,
+		Password: password,
+		TimeEdit: time.Now(),
+	})
+
+	fmt.Println("\nAkun berhasil ditambahkan..")
 }
 
 func HapusAkun() {
+		var target, target1 string
+
+	spasi()
+	fmt.Print("\nMasukan nama layanan: ")
+	fmt.Scanln(&target)
+	target = normalisasi(target)
+
+	fmt.Println(" ")
+	fmt.Println("Layanan dan username yang tersedia:")
+	cariAkunLayanan(target)
+	fmt.Println(" ")
+
+	fmt.Print("Masukan username: ")
+	fmt.Scanln(&target1)
+	target1 = normalisasi(target1)
+
+	for i := 0; i < len(DataAkun); i++ {
+		if DataAkun[i].LayananNorm == target && DataAkun[i].UsernameNorm == target1{
+			DataAkun = append(DataAkun[:i], DataAkun[i+1:] ...)
+			fmt.Println("Akun berhasil dihapus..")
+			return
+		}
+	}
+	fmt.Println("Akun tidak ditemukan..")
 }
+
