@@ -11,7 +11,7 @@ type Account struct {
 	Password    string
 	TimeEdit    time.Time
 
-	LayananNorm string
+	LayananNorm  string
 	UsernameNorm string
 }
 
@@ -114,7 +114,7 @@ func GantiPassword() {
 	target1 = normalisasi(target1)
 
 	for i := 0; i < len(DataAkun); i++ {
-		if DataAkun[i].LayananNorm == target && DataAkun[i].UsernameNorm == target1{
+		if DataAkun[i].LayananNorm == target && DataAkun[i].UsernameNorm == target1 {
 			fmt.Print("Masukan password baru: ")
 			fmt.Scanln(&DataAkun[i].Password)
 			DataAkun[i].TimeEdit = time.Now()
@@ -127,28 +127,33 @@ func GantiPassword() {
 func TambahAkun() {
 	var layanan, username, password string
 
-	spasi()
-	fmt.Print("\nMasukan nama layanan: ")
-	fmt.Scanln(&layanan)
+	fmt.Print("\nMasukan jumlah akun yang ingin ditambahkan: ")
+	var jumlah int
+	fmt.Scanln(&jumlah)
 
-	fmt.Print("Masukan username: ")
-	fmt.Scanln(&username)
+	for i := 0; i < jumlah; i++ {
+		spasi()
+		fmt.Print("\nMasukan nama layanan: ")
+		fmt.Scanln(&layanan)
 
-	fmt.Print("Masukan password: ")
-	fmt.Scanln(&password)
+		fmt.Print("Masukan username: ")
+		fmt.Scanln(&username)
+
+		fmt.Print("Masukan password: ")
+		fmt.Scanln(&password)
 
 		DataAkun = append(DataAkun, Account{
-		NamaLayanan: layanan,
-		Username: username,
-		Password: password,
-		TimeEdit: time.Now(),
-	})
+			NamaLayanan: layanan,
+			Username:    username,
+			Password:    password,
+			TimeEdit:    time.Now(),
+		})
 
-	fmt.Println("\nAkun berhasil ditambahkan..")
+		fmt.Println("\nAkun berhasil ditambahkan..")
+	}
 }
-
 func HapusAkun() {
-		var target, target1 string
+	var target, target1 string
 
 	spasi()
 	fmt.Print("\nMasukan nama layanan: ")
@@ -165,12 +170,11 @@ func HapusAkun() {
 	target1 = normalisasi(target1)
 
 	for i := 0; i < len(DataAkun); i++ {
-		if DataAkun[i].LayananNorm == target && DataAkun[i].UsernameNorm == target1{
-			DataAkun = append(DataAkun[:i], DataAkun[i+1:] ...)
+		if DataAkun[i].LayananNorm == target && DataAkun[i].UsernameNorm == target1 {
+			DataAkun = append(DataAkun[:i], DataAkun[i+1:]...)
 			fmt.Println("Akun berhasil dihapus..")
 			return
 		}
 	}
 	fmt.Println("Akun tidak ditemukan..")
 }
-
