@@ -10,8 +10,11 @@ type Account struct {
 
 var DataAkun = []Account{
 	{NamaLayanan: "Steam", Username: "Dezakie", Password: "Balikpapan2006"},
+	{NamaLayanan: "Steam", Username: "gugu", Password: "Balikpapan2006"},
 	{NamaLayanan: "Google", Username: "dzakyangasli@gmail.com", Password: "Balikpapan2006"},
 	{NamaLayanan: "Instagram", Username: "dzaky_ono", Password: "Balikpapan2006"},
+	{NamaLayanan: "Steam", Username: "fofo", Password: "Balikpapan2006"},
+	{NamaLayanan: "Steam", Username: "Dezakie", Password: "Balikpapan2006"},
 }
 
 var PasswordApp string = "admin123"
