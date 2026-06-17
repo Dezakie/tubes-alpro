@@ -4,8 +4,8 @@ import "fmt"
 
 func TampilkanStatistik() {
 	var lemah, sedang, kuat int
-	for _, akun := range DataAkun {
-		switch KlasifikasiSandi(akun.Password) {
+	for i := 0; i < len(DataAkun); i++ {
+		switch KlasifikasiSandi(DataAkun[i].Password) {
 		case "lemah":
 			lemah++
 		case "sedang":
@@ -16,7 +16,7 @@ func TampilkanStatistik() {
 	}
 	fmt.Println("\n=== Statistik Password Manager ===")
 	fmt.Printf("Total akun yang tersimpan: %d akun\n", len(DataAkun))
-	
+
 	fmt.Println("\nKlasifikasi Kekuatan Sandi: ")
 	fmt.Printf("- Sandi Lemah: %d akun\n", lemah)
 	fmt.Printf("- Sandi Sedang: %d akun\n", sedang)
@@ -29,7 +29,8 @@ func KlasifikasiSandi(password string) string {
 		return "lemah"
 	}
 
-	for _, char := range password {
+	for i := 0; i < len(password); i++ {
+		char := password[i] 
 		switch {
 		case char >= 'A' && char <= 'Z':
 			upper++
